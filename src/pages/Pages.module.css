@@ -1,0 +1,10 @@
+.footerLinks_col{
+    font-size: 13px;
+    cursor: pointer;
+    text-align: left;
+    padding: 20px;
+}
+.footer_heading{
+    font-size: 15px;
+    cursor: none;
+}

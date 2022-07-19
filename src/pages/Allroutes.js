@@ -1,14 +1,16 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Navbar from "../components/Navbar";
+import NavbarTop from "../components/Navbar";
+import NavbarDown from "../components/NavbarDown";
 import Home from "./Home";
 
 const Allroutes = () => {
   return (
     <>
-      <Navbar />
+      <NavbarTop />
+      <NavbarDown/>
       <Routes>
-        <Route path="/" element={<Home/>}></Route>
+        <Route path="/" element={<Home />}></Route>
       </Routes>
     </>
   );
