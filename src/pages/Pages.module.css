@@ -3,7 +3,14 @@
     margin: 20px auto;
     text-align: left;
 }
-
+.home_main>h4{
+    display: inline-block;
+    vertical-align: baseline;
+    margin-left: 5px;
+    font-size: 20px;
+    color: #000;
+    margin:20px 0px;
+}
 
 /* Super Deal page */
 
