@@ -1,5 +1,6 @@
 import React from "react";
 import "./Navbar.css";
+import { Link } from "react-router-dom";
 import { FaUserAlt, FaRegHeart, FaCartPlus, FaSearch } from "react-icons/fa";
 import { Container, Form, Nav, Navbar } from "react-bootstrap";
 
@@ -7,7 +8,7 @@ const NavbarTop = () => {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand href="#">
+        <Navbar.Brand href="#" as={Link} to="/">
           <img
             src="https://uidesign.gbtcdn.com/GB/images/promotion/2019/a_evan/Gearbest/logo_gearbest.png"
             alt="brand-icon"

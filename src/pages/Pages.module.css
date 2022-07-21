@@ -1,3 +1,25 @@
+/* home page css */
+.home_main{
+    margin: 20px auto;
+    text-align: left;
+}
+
+
+/* Super Deal page */
+
+.superdealmain{
+    text-align: left;
+    margin-top: 10px;
+    font-size: 12px;
+}
+.itemsgrid{
+     display: grid;
+     grid-template-columns: repeat(5,1fr);
+     grid-template-rows: repeat(auto);
+     gap:20px
+}
+ /* footer css  */
+
 .footerLinks_col{
     font-size: 13px;
     cursor: pointer;

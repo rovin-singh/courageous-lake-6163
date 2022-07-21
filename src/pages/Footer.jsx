@@ -7,7 +7,7 @@ import {
   FaTwitter,
   FaTumblr,
 } from "react-icons/fa";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 const Footer = () => {
   return (
     <>
@@ -16,7 +16,7 @@ const Footer = () => {
           <div className="d-flex">
             <h6>Newsletter</h6>
             <div>
-              <input type="search" placeholder="Enter Email to get 50 points" />
+              <input type="search" placeholder="Enter Email to get 50 points" style={{width:"200px"}} />
              <input type="submit" value="subscribe" style={{background:"black",color:"white"}}/>
             </div>
 

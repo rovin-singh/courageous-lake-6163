@@ -1,5 +1,6 @@
 import React from "react";
 import "./Navbar.css";
+import {Link} from "react-router-dom"
 import { Container, Row, Col } from "react-bootstrap";
 const NavbarDown = () => {
   return (
@@ -18,9 +19,9 @@ const NavbarDown = () => {
           >
            <span>Category</span>
           </Col>
-          <Col>SUPER DEALS</Col>
-          <Col>APP ONLY</Col>
-          <Col>NEW ARRIVALS</Col>
+          <Col><Link to="/superdeal"> SUPER DEALS</Link> </Col>
+          <Col><Link to="/apponly">APP ONLY</Link></Col>
+          <Col><Link to="/newarrivals">NEW ARRIVALS</Link></Col>
         </Row>
       </Container>
     </div>
