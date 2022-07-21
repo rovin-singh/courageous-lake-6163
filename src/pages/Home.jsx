@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { getProductsData } from "../API/Api";
 import { Container, Card } from "react-bootstrap";
 import { FaRegThumbsUp, FaShoppingBag } from "react-icons/fa";
@@ -11,7 +11,9 @@ const Home = () => {
   const getProduct = () => {
     getProductsData().then((res) => setRecProd(res.data));
   };
-  getProduct();
+  useEffect(()=>{
+    getProduct();
+  },[])
   return (
     <Container className={styles.home_main}>
       <h4>

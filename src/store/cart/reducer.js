@@ -22,6 +22,7 @@ const cartInitalState = {
     loading: false,
     error: false,
   },
+  data: [],
 };
 export const cartReducer = (state = cartInitalState, { type, payload }) => {
   switch (type) {
@@ -42,6 +43,7 @@ export const cartReducer = (state = cartInitalState, { type, payload }) => {
           loading: false,
           error: false,
         },
+        data:[...state.data,payload]
       };
     }
     case ADD_ITEM_TO_CART_ERROR: {

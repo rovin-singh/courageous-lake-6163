@@ -1,10 +1,13 @@
 import React from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
+import {useSelector} from "react-redux"
 import { FaUserAlt, FaRegHeart, FaCartPlus, FaSearch } from "react-icons/fa";
 import { Container, Form, Nav, Navbar } from "react-bootstrap";
 
 const NavbarTop = () => {
+  const state = useSelector((state) => state.cart);
+  console.log("cartlenght",state.data.length)
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -36,22 +39,23 @@ const NavbarTop = () => {
           </Form>
           <div className="d-flex">
             <Nav.Link href="#action1">
-              <span style={{ padding: "10px", alignContent: "center" }}>
+              <span style={{ padding: "5px", alignContent: "center" }}>
                 <FaUserAlt />{" "}
               </span>{" "}
               Sign In
             </Nav.Link>
             <Nav.Link href="#action1">
-              <span style={{ padding: "10px", alignContent: "center" }}>
+              <span style={{ padding: "5px", alignContent: "center" }}>
                 <FaRegHeart />{" "}
               </span>{" "}
               Favourites
             </Nav.Link>
             <Nav.Link as={Link} to="/cart">
-              <span style={{ padding: "10px", alignContent: "center" }}>
-                <FaCartPlus />{" "}
+              <span style={{ padding: "5px", alignContent: "center" }}>
+                <FaCartPlus /> 
               </span>{" "}
               Cart
+              <span className="total">{state.data.length}</span>
             </Nav.Link>
           </div>
         </Navbar.Collapse>
