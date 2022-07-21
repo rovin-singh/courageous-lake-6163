@@ -47,7 +47,7 @@ const NavbarTop = () => {
               </span>{" "}
               Favourites
             </Nav.Link>
-            <Nav.Link href="#action1">
+            <Nav.Link as={Link} to="/cart">
               <span style={{ padding: "10px", alignContent: "center" }}>
                 <FaCartPlus />{" "}
               </span>{" "}
