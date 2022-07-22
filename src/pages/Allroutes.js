@@ -8,7 +8,7 @@ import Home from "./Home";
 import NewArrivals from "./NewArrivals";
 import Products from "./Products";
 import Superdeal from "./Superdeals";
-
+import Login from "./Login";
 const Allroutes = () => {
   return (
     <>
@@ -21,7 +21,8 @@ const Allroutes = () => {
         <Route path="/newarrivals" element={<NewArrivals/>}/>
         <Route path="/cart" element={<Cart/>}/>
         <Route path="/products/:product_id" element={<Products/>}/>
-      </Routes>
+        <Route path="/login" element={<Login/>}/>
+       </Routes>
     </>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Navbar.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { FaUserAlt, FaRegHeart, FaCartPlus, FaSearch } from "react-icons/fa";
 import { Container, Form, Nav, Navbar, Card, Button } from "react-bootstrap";
@@ -8,7 +8,11 @@ import { Container, Form, Nav, Navbar, Card, Button } from "react-bootstrap";
 const NavbarTop = () => {
   const state = useSelector((state) => state.cart);
   const [show, setShow] = useState(false);
-
+  const Navigate=useNavigate()
+  const goHandleLogin = () => {
+    console.log("hello")
+    Navigate("/login");
+  };
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -42,28 +46,43 @@ const NavbarTop = () => {
             </div>
           </Form>
           <div className="d-flex">
-            <Nav.Link className="login_container" onMouseOver={handleShow} >
+            <Nav.Link className="login_container" onMouseOver={handleShow}>
               <span style={{ padding: "5px", alignContent: "center" }}>
                 <FaUserAlt />{" "}
               </span>{" "}
               Sign In
             </Nav.Link>
 
-            {show && 
-            <div className="login_div" onMouseOver={handleShow} onMouseOut={handleClose}>
-              <Card style={{textAlign:"left"}}>
-                <Card.Body>
-      
-                  <Card.Text>
-                  <p className="text-left">Welcome to Gearbest</p>
-                    <Button variant="warning" className="btn-cutomize">Sign In</Button>
-                  </Card.Text>
-                  <p>Register on Gearbest: Earn 10 points</p>
-                  <Button variant="primary" className="btn-cutomize">Register</Button>
-                </Card.Body>
-              </Card>
-            </div>
-}
+            {show && (
+              <div
+                className="login_div"
+                onMouseOver={handleShow}
+                onMouseOut={handleClose}
+              >
+                <Card style={{ textAlign: "left" }}>
+                  <Card.Body>
+                    <Card.Text>
+                      <p className="text-left">Welcome to Gearbest</p>
+                      <Button
+                        variant="warning"
+                        className="btn-cutomize"
+                        onClick={goHandleLogin}
+                      >
+                        Sign In
+                      </Button>
+                    </Card.Text>
+                    <p>Register on Gearbest: Earn 10 points</p>
+                    <Button
+                      variant="primary"
+                      className="btn-cutomize"
+                      onClick={goHandleLogin}
+                    >
+                      Register
+                    </Button>
+                  </Card.Body>
+                </Card>
+              </div>
+            )}
             <Nav.Link href="#action1">
               <span style={{ padding: "5px", alignContent: "center" }}>
                 <FaRegHeart />{" "}
