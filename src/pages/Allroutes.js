@@ -6,6 +6,7 @@ import AppOnly from "./AppOnly";
 import Cart from "./Cart";
 import Home from "./Home";
 import NewArrivals from "./NewArrivals";
+import Products from "./Products";
 import Superdeal from "./Superdeals";
 
 const Allroutes = () => {
@@ -19,6 +20,7 @@ const Allroutes = () => {
         <Route path="/apponly" element={<AppOnly/>}/>
         <Route path="/newarrivals" element={<NewArrivals/>}/>
         <Route path="/cart" element={<Cart/>}/>
+        <Route path="/products/:product_id" element={<Products/>}/>
       </Routes>
     </>
   );

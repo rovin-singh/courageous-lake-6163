@@ -2,15 +2,9 @@ import React, { useEffect, useState } from "react";
 import styles from "./Pages.module.css";
 import { getProductsData } from "../API/Api";
 import { Container, Row, Col, Card } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { addingInCart } from "../store/cart/action";
+import { Link } from "react-router-dom";
 const Superdeal = () => {
   const [data, setData] = useState([]);
-  const dispatch=useDispatch()
-
-  const addcart=(data)=>{
-    dispatch(addingInCart(data))
-  }
   const getData = () => {
     getProductsData().then((res) => setData(res.data));
   };
@@ -26,7 +20,7 @@ const Superdeal = () => {
       </Row>
       <div className={styles.itemsgrid}>
         {data.map((item) => (
-          <Card >
+          <Card key={item.id} >
             <Card.Img variant="top" src={item.image} height="200px"/>
             <Card.Body>
               <Card.Text>
@@ -37,7 +31,7 @@ const Superdeal = () => {
                 </div>
 
               </Card.Text>
-              <p onClick={()=>addcart(item)}>Add to Store</p>
+             <Link to={`/products/${item.id}`}>View More Details</Link>
             </Card.Body>
           </Card>
         ))}

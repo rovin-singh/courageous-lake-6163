@@ -109,3 +109,15 @@
   border-radius: 50%;
   font-size: 11px;
 }
+.login_container{
+  position: relative;
+}
+.login_div{
+  position: absolute;
+  margin: 30px -30px;
+  z-index: 10;
+}
+.btn-cutomize{
+  width: 100%;
+  font-weight: 500;
+}
