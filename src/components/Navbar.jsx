@@ -1,21 +1,26 @@
 import React, { useState } from "react";
 import "./Navbar.css";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FaUserAlt, FaRegHeart, FaCartPlus, FaSearch } from "react-icons/fa";
 import { Container, Form, Nav, Navbar, Card, Button } from "react-bootstrap";
-
+import { logoutReq } from "../store/auth/auth.actions";
 const NavbarTop = () => {
+  const auth = useSelector((state) => state.auth);
+  console.log("auth", auth);
   const state = useSelector((state) => state.cart);
   const [show, setShow] = useState(false);
-  const Navigate=useNavigate()
+  const Navigate = useNavigate();
+  const dispatch=useDispatch()
   const goHandleLogin = () => {
-    console.log("hello")
     Navigate("/login");
   };
+  const goHandleLogout=()=>{
+    dispatch(logoutReq());
+
+  }
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -48,9 +53,9 @@ const NavbarTop = () => {
           <div className="d-flex">
             <Nav.Link className="login_container" onMouseOver={handleShow}>
               <span style={{ padding: "5px", alignContent: "center" }}>
-                <FaUserAlt />{" "}
-              </span>{" "}
-              Sign In
+                <FaUserAlt />
+              </span>
+              {auth.isAuth ? "My Account" : "Sign In"}
             </Nav.Link>
 
             {show && (
@@ -60,39 +65,51 @@ const NavbarTop = () => {
                 onMouseOut={handleClose}
               >
                 <Card style={{ textAlign: "left" }}>
-                  <Card.Body>
-                    <Card.Text>
-                      <p className="text-left">Welcome to Gearbest</p>
+                  {auth.isAuth ? (
+                    <Card>
+                      <Card.Body>
+                        <p>{auth.profile}</p>
+                        <Button variant="warning" className="btn-cutomize" onClick={goHandleLogout}>
+                          Logout
+                        </Button>
+                      </Card.Body>
+                    </Card>
+                  ) : (
+                    <Card.Body>
+                      <Card.Text>
+                        <p className="text-left">Welcome to Gearbest</p>
+                        <Button
+                          variant="warning"
+                          className="btn-cutomize"
+                          onClick={goHandleLogin}
+                        >
+                          Sign In
+                        </Button>
+                      </Card.Text>
+                      <p>Register on Gearbest: Earn 10 points</p>
                       <Button
-                        variant="warning"
+                        variant="primary"
                         className="btn-cutomize"
                         onClick={goHandleLogin}
                       >
-                        Sign In
+                        Register
                       </Button>
-                    </Card.Text>
-                    <p>Register on Gearbest: Earn 10 points</p>
-                    <Button
-                      variant="primary"
-                      className="btn-cutomize"
-                      onClick={goHandleLogin}
-                    >
-                      Register
-                    </Button>
-                  </Card.Body>
+                    </Card.Body>
+                  )}
                 </Card>
               </div>
             )}
+
             <Nav.Link href="#action1">
               <span style={{ padding: "5px", alignContent: "center" }}>
-                <FaRegHeart />{" "}
-              </span>{" "}
+                <FaRegHeart />
+              </span>
               Favourites
             </Nav.Link>
             <Nav.Link as={Link} to="/cart">
               <span style={{ padding: "5px", alignContent: "center" }}>
                 <FaCartPlus />
-              </span>{" "}
+              </span>
               Cart
               <span className="total">{state.data.length}</span>
             </Nav.Link>
