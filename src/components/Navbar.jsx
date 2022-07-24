@@ -7,14 +7,17 @@ import { Container, Form, Nav, Navbar, Card, Button } from "react-bootstrap";
 import { logoutReq } from "../store/auth/auth.actions";
 const NavbarTop = () => {
   const auth = useSelector((state) => state.auth);
-  console.log("auth", auth);
   const state = useSelector((state) => state.cart);
   const [show, setShow] = useState(false);
   const Navigate = useNavigate();
   const dispatch=useDispatch()
   const goHandleLogin = () => {
-    Navigate("/login");
+
+      Navigate("/login");
+
   };
+  
+
   const goHandleLogout=()=>{
     dispatch(logoutReq());
 
@@ -111,7 +114,7 @@ const NavbarTop = () => {
                 <FaCartPlus />
               </span>
               Cart
-              <span className="total">{state.data.length}</span>
+              <span className="total">{state.data.length>0 ? state.data.length:"0"}</span>
             </Nav.Link>
           </div>
         </Navbar.Collapse>

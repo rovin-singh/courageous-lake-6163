@@ -2,16 +2,20 @@ import React, { useEffect, useState } from "react";
 import styles from "./Pages.module.css";
 import { getProductsData } from "../API/Api";
 import { Container, Row, Col, Card } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import {addingInCart} from "../store/cart/action"
 const NewArrivals = () => {
   const [data, setData] = useState([]);
-
+  const dispatch=useDispatch()
   const getData = () => {
     getProductsData().then((res) => setData(res.data));
   };
   useEffect(() => {
     getData();
   }, []);
-  console.log(data);
+ const addTocart=(item)=>{
+    dispatch(addingInCart(item))
+ }
   return (
     <Container className={styles.superdealmain}>
       <Row>
@@ -32,7 +36,7 @@ const NewArrivals = () => {
                 </div>
 
               </Card.Text>
-              <p >Add to Store</p>
+              <p onClick={()=>addTocart(item)}>Add to Store</p>
             </Card.Body>
           </Card>
         ))}

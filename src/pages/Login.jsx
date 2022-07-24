@@ -39,7 +39,7 @@ const Login = () => {
         dispatch(loginReq(users));
         Navigate("/")
    }
-  console.log(users)
+
   return (
     <Container>
       <Row>

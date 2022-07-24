@@ -5,8 +5,11 @@ import { useParams } from "react-router-dom";
 import { getproduct } from "../API/Api";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import Recomended from "./Recommed";
+import { useDispatch } from "react-redux";
+import {addingInCart} from "../store/cart/action"
 const Products = () => {
   const [product, setProduct] = useState({});
+  const dispatch=useDispatch()
   const param = useParams();
   const getData = () => {
     getproduct(param.product_id)
@@ -17,7 +20,9 @@ const Products = () => {
   useEffect(() => {
     getData();
   }, []);
-  console.log(product);
+  const addTocart=(item)=>{
+    dispatch(addingInCart(item))
+ }
   return (
     <Container className={styles.container}>
       <Row>
@@ -46,10 +51,11 @@ const Products = () => {
             </p>
           </div>
           <div></div>
-          <Button variant="danger">Add To Cart</Button> <Button>BUY NOW</Button>{" "}
+          <Button variant="danger" onClick={()=>addTocart(product)}>Add To Cart</Button> 
+          <Button>BUY NOW</Button>{" "}
           <Button variant="warning">PAY PAL</Button>
         </Col>
-      </Row>
+      </Row>  
       <Recomended />
     </Container>
   );
