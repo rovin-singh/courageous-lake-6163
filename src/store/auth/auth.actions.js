@@ -6,7 +6,6 @@ import {
   SIGNUP,
 } from "./auth.types";
 import axios from "axios";
-
 export const signup = (formdata) => (dispatch) => {
   return axios
     .post("http://localhost:8000/users", {
@@ -16,7 +15,6 @@ export const signup = (formdata) => (dispatch) => {
       window.location.reload(false);
     });
 };
-
 export const loginReq =
   ({ email, password }) =>
   (dispatch) => {
@@ -41,7 +39,6 @@ export const loginReq =
         dispatch({ type: LOGIN_ERROR, payload: err });
       });
   };
-
 export const logoutReq = () => (dispatch) => {
   dispatch({ type: LOGOUT });
 };
